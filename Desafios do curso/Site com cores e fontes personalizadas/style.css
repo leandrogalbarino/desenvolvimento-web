@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+body{
+    font-family: Roboto,Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    background-color: #3383F2;
+    text-align: justify;
+}
+h1{
+    font-family: Poppins ,Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #F29633;
+    text-shadow: 3px 3px 8px black;
+    /* background-color: #515F73; */
+}
+
+.imagem-posicionada {
+    position: absolute;
+    top: 38em;
+    left: 20px;
+}
+
+h2{
+    background-color: #33F2E8   ;
+    
+}
+p{
+    background-color: white;
+}

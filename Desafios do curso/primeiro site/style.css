@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'idroid';
+    src: url(fonts/IDroid.otf) format(opentype);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'idroid-bold';
+    src: url(fonts/IDroid\ Bold.otf) format(opentype);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body{
+    background-color: #89CDA5;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px 0px 0px 0px;
+}
+header{
+    background-image: linear-gradient(to bottom, #58B879, #1A5A37);
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+    text-shadow: 3px 3px 10px black;
+    color: white;
+    
+}
+header > h1{
+    font-family: 'Bebas Neue', sans-serif;
+}
+h1{
+    font-family: idroid,Arial, Helvetica, sans-serif;
+    margin:0px 0px 20px 0px; 
+}
+h2{
+    font-family: idroid,Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to right, #89CDA5, #ffffff);
+    color: #1A5A37;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.27);
+    border-radius: 10px 10px;
+    text-align: left;
+    padding: 3px 10px 3px 10px;
+}
+
+header > p{
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    margin:10px 0px 0px 0px;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+nav > p > a{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+}
+
+main{
+    background-color: #ffffffff;
+    border: 30px solid white;
+    padding:10px 10px 10px 10px;
+    text-indent: 30px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    border-radius:20px 5px;
+    
+}
+img{
+    vertical-align: middle; /* Alinha verticalmente (opcional, apenas para garantir compatibilidade) */
+}
+strong{
+    color: #1A5A37;
+}
+
+div#cabecario-da-pergunta{
+
+    background-color:#C5EBD6;
+    padding: 5px 10px 5px 10px;
+    margin: 0px 0px 0px 0px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+div#pergunta > h1{
+    background-color: #2FA866;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.609);
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 1.4em;
+    margin: 0px 0px 0px 0px;    
+}
+footer{
+    background-color: #1A5A37;
+    color: white;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    outline: 0px 0px 0px 0px;
+}
+
+footer > p{
+    text-align: center;
+}
+
+a::after {
+    content: "🔗";
+}
+
+nav > p > a::after {
+    display: none;
+}
+nav > p > a:hover {
+    background-color: #89CDA5;
+}
+nav > p{
+    /* padding: 5px 15px 5px 10px; */
+    background-color: #2D784C;
+    border:10px solid #2D784C;
+}
+ol{
+    text-align: left;
+    padding: 10px 0px 0px 0px;
+}
+ul::before{
+    content: "✔️";
+}
