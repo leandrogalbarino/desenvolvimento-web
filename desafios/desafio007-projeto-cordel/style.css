@@ -16,7 +16,8 @@
     --font-titulo: Roboto, Salsa, Arial, Helvetica, sans-serif;
 }
 
-body{
+html, body{
+    min-height: 100vh;
     background-color: rgb(255, 255, 255);
 }
 
@@ -30,23 +31,28 @@ header h1{
     font-size:3em;
     padding: 50px 20px 0px 20px;
     font-family: var(--font-titulo);
+    font-variant: small-caps;
     font-size:3em;
 }
 header > p{
     font-size: 1.1em;
     padding: 0px 5px 50px 5px;
+    margin: auto;
+    font-family: var(--font-titulo);
 }
 
 section{
-    padding: 30px 15px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 30px;
     margin: 50px 0px;
     max-height: 1000px;
     background-color: rgb(255, 255, 255);
 }
 
-article{
+p{
     max-width: 500px;
-    line-height: 80px;
+    line-height: 2em;
     font-size: 2.2em;
     font-family: var(--font-texto);
     padding: 20px;
@@ -60,7 +66,8 @@ article{
     background-size: cover;
 }
 
-.fundo-com-imagem article{
+.fundo-com-imagem p{
+    width: 400px;
     background-color: rgba(0, 0, 0, 0.475);
     color: white;
 }
@@ -72,16 +79,9 @@ section#imagem2{
     background-image: url("imagens/background002.jpg");
 }
 
-footer{
-    background-color: black;
-    color:white;
-    padding: 3px;
-    text-align: center;
-    font-family: var(--font-titulo);
-}
-
 a{
     text-decoration: none;
+    font-weight: bolder;
     color: lightblue;
 }
 a:hover{
@@ -91,4 +91,12 @@ a:hover{
     border-radius: 2px;
     transition: 0.5s;
 
+}
+
+footer{
+    background-color: black;
+    color:white;
+    padding: 3px;
+    text-align: center;
+    font-family: var(--font-titulo);
 }
