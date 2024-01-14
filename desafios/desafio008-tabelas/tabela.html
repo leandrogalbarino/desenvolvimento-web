@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas</title>
+    <style>
+        body {
+            background-color: cornflowerblue;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            width: 300px;
+            margin:30px;
+        }
+
+        th {
+            background-color: rgb(149, 105, 193);
+        }
+
+        td {
+            padding: 5px 10px;
+            border: 1px solid black;
+        }
+
+        tr:nth-child(2n-1) {
+            background-color: white;
+        }
+
+        tbody tr:nth-child(2n) {
+            background-color: grey;
+        }
+
+        caption{
+            text-transform: uppercase;
+            background-color: rgb(190, 159, 219);
+            border-radius: 3px 3px 0px 0px ;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>Tabela de números com colspan e rowspan</caption>
+
+        <thead>
+            <th colspan="4">Números</th>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td rowspan="2">3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td colspan="3">8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td rowspan="2">10</td>
+                <td colspan="2">11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>TOTAL</th>
+                <td colspan="3">9999</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="4">A</td>
+                <td rowspan="4">B</td>
+            </tr>
+            <tr>
+                <td rowspan="4">C</td>
+                <td>D</td>
+                <td>E</td>
+                <td>F</td>
+            </tr>
+            <tr>
+                <td>G</td>
+                <td>H</td>
+                <td>I</td>
+            </tr>
+            <tr>
+                <td>J</td>
+                <td>L</td>
+                <td>M</td>
+            </tr>
+            <tr>
+                <td colspan="4">N</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
