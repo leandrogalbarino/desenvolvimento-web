@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+body{
+    background-image: url("../imagens/back-pc.jpg");
+}
+img#pc{ display: block;}
+img#phone{display: none;}
