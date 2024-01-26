@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: blue;
+    color: white;
+}
+h1{
+    text-align: center;
+}
+
+main{
+    max-width: 800px;
+    margin:auto;
+    background-color: aqua;
+    color: black;
+    margin-top:50px;
+    padding:20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
