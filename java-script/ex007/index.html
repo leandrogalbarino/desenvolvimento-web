@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Olá mundo!</h1>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="info">
+                    <div class="cabecario-info">
+                        <label for="ini">Inicio:</label>
+                    </div>
+                    <input type="number" name="ini" id="ini" value="0">
+                </div>
+
+                <div class="info">
+                    <div class="cabecario-info">
+                        <label for="fim">Fim:</label>
+                    </div>
+                    <input type="number" name="fim" id="fim" value="10">
+                </div>
+
+                <div class="info">
+                    <div class="cabecario-info">
+                        <label for="passo">Passo</label>:
+                    </div>
+                    <input type="number" name="passo" id="passo" value="1">
+                </div>
+                <div class="info"> <input type="button" value="Contar" onclick="contar()"> </div>
+
+            </div>
+
+            <div class="container" id="resposta">
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p> &copy; <a href="https://github.com/leandrokise" target="_blank">Leandro Kise</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

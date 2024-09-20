@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 5px 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 400px;
+}
+
+.card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+    color: #233F8E;
+    border-top: 1px solid #222222;
+
+}
+
+div.most-popular {
+    background-image: linear-gradient(to right bottom, #253F8F, #2D4F93, #55A1AC);
+    color: white;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.cabecario-card {
+    flex: 1;
+    text-align: center;
+}
+
+.cabecario-card h2 {
+    max-width: 120px;
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+
+.cabecario-card p {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.cabecario-card span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.4em;
+    color: #59A9AB;
+    padding-top: 5px;
+}
+
+.beneficios-card {
+    flex: 1;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+}
+
+.chamada-card {
+    flex: 1;
+    text-transform: uppercase;
+}
+
+.chamada-card a {
+    display: block;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: .9em;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.346);
+}
+
+.verde {
+    background-color: #69C7B7;
+    color: white;
+}
+
+.borda-verde {
+    border: 2px solid #69C7B7;
+    color: #69C7B7;
+
+}
+
+.borda-branca {
+    border: 1px solid white;
+    color: white;
+}
+
+a.botao-destaque {
+    color: white;
+}

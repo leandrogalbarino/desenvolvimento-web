@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+header{
+    padding:30px;
+    text-align: center;
+    background-color: rgb(28, 104, 180);
+    color: white;
+}
+
+header h1{
+    font-size: 2.5em;
+}
+
+main{
+    background-color: white;
+    text-align: justify;
+    padding:20px;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+main h2{
+    text-transform: uppercase;
+    text-align: center;
+}
+main p{
+    text-indent: 15px;
+}

@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background-color: #4C35E0;
+}
+
+.preco {
+    height: 100vh;
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.preco-info {
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.preco-info h1 {
+    font-size: 2em;
+    padding-bottom: 25px;
+    line-height: 1;
+}
+
+.preco-info p {
+    padding-top: 25px;
+    line-height: 1;
+    font-weight: 300;
+    font-size: 1.25em;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+.preco-planos {
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-end;
+}
+
+.plano-item {
+    max-width: 400px;
+    flex: 1 1 280px;
+    background-color: white;
+    color: #222222;
+    padding: 0px 50px 30px 50px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.27);
+    text-align: center;
+}
+
+@media(max-width:710px) {
+    .preco-planos {
+        flex-direction: column;
+    }
+
+    .plano-item {
+        min-width: 350px;
+        flex: 1;
+    }
+
+    .most-popular {
+        order: -1;
+    }
+}
+
+@media(max-width:945px) and (min-width:700px) {
+    .most-popular {
+        order: 1;
+    }
+}
+
+.plano-item ul {
+    line-height: 1.8;
+    padding: 15px 0px;
+}
+
+.plano-item h2 {
+    color: #ebad0f;
+    padding: 15px 0px;
+    font-weight: 300;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.349);
+}
+
+.plano-item span {
+    font-size: 3em;
+    font-weight: bold;
+    color: #4C35E0;
+}
+
+.plano-item a {
+    color: #4C35E0;
+    font-weight: bold;
+}
+
+.emoji {
+    font-size: 48px;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+}
+
+.destaque {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #4C35E0;
+    background-color: #FFE4D4;
+}
+
+a.botao-principal {
+    display: block;
+    padding: 15px 15px;
+    border: none;
+    background-color: #4C35E0;
+    color: white;
+}

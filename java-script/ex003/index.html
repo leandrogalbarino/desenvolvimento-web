@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pais</title>
+</head>
+
+<body>
+    <p>Olá tudo bem, qual seu nome?
+        <input type="text" name="nome" id="nome">
+        <input type="button" value="VERIFICAR" onclick="nome_do_usuario()">
+    <p id="escrever"> </p>
+    <script>
+        var escrita = document.querySelector('#escrever');
+        function nome_do_usuario() {
+            var name = document.querySelector('#nome');
+            if (name.value == '1'){
+                escrita.innerHTML = 'OLÁ MUNDO'
+            }
+            else{
+                escrita.innerHTML = "olá"
+            }
+        }
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: rgb(228, 228, 228);
+    border-radius: 20px;
+    max-width: 960px;
+    min-height: 500px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.info {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    padding: 20px;
+    transform: translate(-50%, -20%);
+    color: white;
+    border: none;
+}
+
+.preto {
+    background-color: rgba(0, 0, 0, 0.656);
+    z-index: 1;
+}
+
+.info h1 {
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info a {
+    color: white;
+}
+
+.info p {
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container-pequeno {
+    background-color: rgb(202, 132, 40);
+    max-width: 200px;
+    height: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.imagem {
+    flex: 1;
+    max-width: 100%;
+}
+
+img {
+    height: 100%;
+    max-width: 100%;
+}
+
+.preco {
+    padding: 5px 5px;
+    background-color: rgb(161, 161, 161);
+}
+
+.display-row {
+    width: 200px;
+    align-self: flex-end;
+}
+
+div.photo {
+    border-radius: 0px 20px 20px 0px;
+    justify-content: flex-start;
+    background-image: url('../imagens/mulher-preto-e-branco.jpg');
+    background-color: blueviolet;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

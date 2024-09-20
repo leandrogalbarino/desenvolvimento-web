@@ -1,0 +1,149 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #1e7099;
+    --cor-secundaria: #fa4f0c55;
+    --font-principal: Inter, Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-principal);
+}
+
+.logo {
+    width: 70px;
+}
+
+.container-header-background {
+    background-color: #FFFFFF;
+    border-bottom: 2px solid var(--cor-principal);
+    padding: 10px 0px;
+}
+
+.container-header {
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--cor-secundaria);
+}
+
+.contato {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contato a {
+    color: var(--cor-secundaria);
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+
+.container-apresentacao {
+    max-width: 950px;
+    min-height: 350px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #808080;
+    border: 2px solid var(--cor-principal);
+    /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.304); */
+
+}
+
+.apresentacao {
+    flex: 1 1 350px;
+    background-color: #f7f7f7;
+    padding: 10px 0px;
+
+}
+
+.apresentacao h2 {
+    color: #ffffff;
+    background-color: var(--cor-principal);
+    text-transform: uppercase;
+    font-weight: 500;
+    /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.134); */
+}
+
+.apresentacao h2, .apresentacao p {
+    display: inline-block;
+    padding: 5px 30px;
+    margin: 10px 0;
+}
+
+.apresentacao p {
+    font-style: italic;
+}
+
+.casa-fundo {
+    flex: 1 1 350px;
+}
+
+
+.container-projetos {
+    max-width: 1250px;
+    margin: 0px auto;
+}
+
+.projetos-titulo {
+    margin: 10px;
+    text-align: center;
+    color: #ffffff;
+    background-color: var(--cor-principal);
+    text-transform: uppercase;
+    font-weight: 500;
+
+}
+
+.projetos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.projeto {
+    max-width: 400px;
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+@media(max-width:750px) {
+    .container-apresentacao {
+        border: none;
+        margin: 0 auto;
+    }
+
+    .apresentacao h2, .apresentacao p {
+        display: inline-block;
+        /* padding: 0px 30px; */
+        margin: 10px 0;
+    }
+
+    .casa-fundo {
+        display: none;
+    }
+}

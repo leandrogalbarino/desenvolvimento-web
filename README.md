@@ -1,2 +1,2 @@
-# html-css-study
- Aprendendo a desenvolver em Html e CSS
+# Desenvolvimento Web
+    Códigos em HTML/CSS e Java Script

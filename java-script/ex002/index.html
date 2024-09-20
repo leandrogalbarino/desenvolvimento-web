@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body id="fundo-da-tela">
+    <header>
+        <h1>JavaScript</h1>
+        <p>Hoje o foco do estudo foi JavaScript</p>
+        <nav>
+            <a href="#" id="github">Github</a>
+            <a href="#" id="linkedin">Linkedin</a>
+            <a href="#" id="instagram">Instagram</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Conteúdo</h2>
+            <article id="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolorem culpa aut voluptatum adipisci placeat architecto deleniti minus molestiae repellat! Veritatis vitae aspernatur accusamus fugiat labore. Corrupti itaque dolor esse at neque vel dolorum dolore sint expedita nobis nulla soluta voluptate error facilis aut culpa, autem, commodi repellat unde natus eos sed! Magnam facilis vitae obcaecati optio? Obcaecati ea earum nam quibusdam cupiditate fugit, dolore quisquam suscipit sit eos voluptatum saepe doloribus voluptatem facilis rem enim omnis blanditiis temporibus perspiciatis velit. Voluptas, id! In sunt debitis eveniet unde numquam omnis repellendus, obcaecati eum beatae. Quisquam repudiandae aliquid, ea modi voluptates quam deserunt aut ipsam sit explicabo necessitatibus officia assumenda tempora odio maiores excepturi nulla ullam? Accusantium sint at, id cumque recusandae sequi iste illum quam sed natus laudantium possimus consectetur similique suscipit sit ad dolor, ea debitis! Aliquam porro nam repellendus eligendi quasi dolores officiis earum sed recusandae nesciunt animi itaque reprehenderit ad quibusdam nihil hic rerum enim, minus omnis ab dolore corrupti? Fugit eius voluptatum vero ullam, recusandae nam fugiat animi maxime molestias? Accusamus vitae totam doloremque est, ut itaque deleniti harum fuga odio consectetur nemo! Ipsa saepe neque eveniet adipisci placeat, inventore consectetur perspiciatis explicabo quos nostrum! Magni optio sit et aperiam! Corrupti iusto nemo consequuntur eos totam vero quidem ad recusandae quos non! Tempore, deleniti velit ducimus eos iure, sapiente sint a, esse eligendi molestiae voluptates illum deserunt cum consequatur dignissimos eaque in. Rerum, cumque aliquid. Labore excepturi facilis officia eum quos ad maiores ex, omnis laboriosam quasi itaque voluptates, amet fugiat adipisci est ducimus, eveniet ratione quis placeat aliquam quae illum! Ipsa, tempora officiis quis ducimus natus laudantium quidem velit atque voluptatum, possimus quia maiores harum. Eveniet exercitationem eos minima! Dolorem natus, officiis nisi numquam sequi fugit ipsum, alias doloribus doloremque mollitia quos amet reiciendis distinctio iure iusto illum. Consequuntur consequatur, aut possimus qui ratione eveniet, mollitia hic eius explicabo exercitationem dignissimos praesentium corporis maiores iste. Libero placeat doloremque iure. Nobis laboriosam velit voluptas ut nam, itaque alias ab perspiciatis beatae hic in ea tempora consequuntur dicta cumque explicabo. Autem magni ullam quas voluptas ea, inventore eius reiciendis doloremque dolore minima, recusandae corporis ipsam ex explicabo, maxime aut saepe deleniti esse molestiae! Nam quasi excepturi temporibus quidem perspiciatis fugiat ex! Unde pariatur maxime quae, beatae atque officia incidunt repudiandae cum eveniet, odit odio voluptas cupiditate vitae ad a distinctio deserunt aut qui, dolore aspernatur! Quibusdam asperiores a, alias voluptatum quia velit molestiae! Nam tenetur ullam recusandae consectetur fugit maxime alias possimus id natus molestias commodi rerum, corporis expedita iusto nesciunt, provident, debitis iure voluptate cupiditate a? Sunt, cumque sed quasi aliquam error debitis maiores saepe doloribus, fuga nulla nobis eligendi facilis? Maiores libero hic unde ipsum nemo facilis harum blanditiis labore qui, atque saepe cum ea, explicabo incidunt dignissimos voluptas fugiat officiis maxime itaque cumque. Magnam, ratione. Asperiores, ut vitae. Reiciendis commodi ea non ad dolore ipsa tenetur voluptate eius nobis aut, vel totam architecto cupiditate quasi voluptates qui quos doloremque. Ut quae asperiores harum! Iusto!</article>
+        </section>
+    </main>
+    <footer>
+        <div id="rodape">
+            <p>Site criado por <a href="https://github.com/leandrokise" target="_blank">Leandro Kise</a></p>
+        </div>
+    </footer>
+    <script>
+        var conteudo = window.document.getElementById('texto');
+        var fundo = window.document.getElementById('fundo-da-tela');
+        conteudo.addEventListener('click', clicou);
+        conteudo.addEventListener('mouseout', tirou);
+
+        fundo.addEventListener('mousemove', moveu);
+        fundo.addEventListener('mouseout', saiu);
+        
+        function moveu(){
+            fundo.style.background = 'blue';
+        }
+        function saiu(){
+            fundo.style.background = 'black';
+        }
+        function clicou(){
+            conteudo.style.background = "blue";
+        }
+        function tirou(){
+            conteudo.style.background = 'white';
+        }
+    </script>
+</body>
+</html>
