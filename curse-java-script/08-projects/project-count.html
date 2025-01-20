@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Together Project</title>
+    <link rel="stylesheet" href="styles/project-count.css">
+
+</head>
+
+<body>
+    <main>
+        <section class="subscribe-container">
+            <p>YouTube Subscribe Button</p>
+            <button class="js-subscribe-button subscribe-button" onclick="
+            subscribe();
+            ">Subscribe</button>
+        </section>
+
+        <section class="ship-calc">
+            <p>Amazon Shipping Calculator</p>
+            <p>Orders under $40 = +$10 shipping</p>
+            <p>Orders over $40 = Free shipping</p>
+
+            <div class="calculate">
+                <input type="number" name="cost" id="cost" placeholder="Cost of order" onkeydown="
+                handleCostKeydown(event);
+                ">
+                <button class="cost-button" label="cost" onclick="
+                    amazonShippingCalculator();
+                    ">Calculate
+                </button>
+            </div>
+            <div class="result-container">
+                <p class="js-result"></p>
+            </div>
+        </section>
+
+        <section class="game-container">
+            <p>Rock Paper Scrissors</p>
+            <a href="project-rock-paper-scissors.html">Click here</a>
+        </section>
+    </main>
+
+    <script>
+
+        function subscribe() {
+            const subscribeButton = document.querySelector('.js-subscribe-button');
+            if (subscribeButton.innerText == 'Subscribe'){
+                subscribeButton.innerHTML = 'Subscribed';
+                subscribeButton.classList.add('is-subscribed');
+            }
+            else{
+                subscribeButton.innerHTML = 'Subscribe';
+                subscribeButton.classList.remove('is-subscribed');
+
+            }
+        }
+
+        function amazonShippingCalculator() {
+            const pElement = document.querySelector('.js-result');
+            const value = Number(document.querySelector('#cost').value);
+            if (value < 40) {
+                pElement.innerHTML = `$${(value + 10)}`;
+            } else {
+                pElement.innerHTML = `$${value}`;
+            }
+        }
+
+        function handleCostKeydown(event) {
+            // event is a object
+            // event.key is a 
+            if (event.key === 'Enter') {
+                amazonShippingCalculator();
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+
+<body>
+    <main>
+        <section class="game">
+            <div class="game-text">
+                <p>Rock, Papel and Scissors</p>
+            </div>
+            <div class="game-options">
+                <button onclick="
+                    game(0);
+                    ">Rock</button>
+                <button onclick="
+                    game(1);
+                ">Paper</button>
+                <button onclick="
+                    game(2);
+                ">Scissors</button>
+            </div>
+            <div class="score-container">
+                <p class="score">
+                </p>
+                <button class="button-reset" onclick="
+                    scoreReset();
+                ">Reset</button>
+            </div>
+        </section>
+        <section class="round">
+            <h2 class="round-title">Round</h2>
+            <p class="round-text">
+            </p>
+        </section>
+    </main>
+    <script>
+        function scoreShow() {
+            let scoreDiv = document.querySelector('.score');
+            scoreDiv.innerHTML = `Wins:${score.wins}, Losses:${score.losses}, Ties:${score.ties} `;
+        }
+
+        function scoreReset() {
+            score.losses = 0;
+            score.wins = 0;
+            score.ties = 0;
+            scoreShow();
+            localStorage.removeItem('score');
+        }
+
+        function choiceName(choice) {
+
+            if (choice === 0) {
+                return 'Rock'
+            }
+            if (choice === 1) {
+                return 'Paper'
+            }
+            if (choice === 2) {
+                return 'Scissors'
+            }
+        }
+
+        function game(playerChoice) {
+            let computerChoice = parseInt(Math.random() * 3);
+            let text = document.querySelector('.round-text');
+            text.innerHTML = `Computer choice: ${choiceName(computerChoice)} | `;
+
+            text.innerHTML += `Player choice: ${choiceName(playerChoice)}<br>`
+            if (playerChoice === computerChoice) {
+                text.innerHTML += 'Draw';
+                score.ties++;
+            }
+            //      0 - Rock 1- Paper, 2- Scissors
+            if (playerChoice === 0 && computerChoice === 1) {
+                text.innerHTML += 'Computer Wins';
+                score.losses++;
+            }
+            if (playerChoice === 0 && computerChoice === 2) {
+                text.innerHTML += 'Player Wins';
+                score.wins++;
+            }
+
+            if (playerChoice === 1 && computerChoice === 0) {
+                text.innerHTML += 'Player Wins';
+                score.wins++;
+            }
+            if (playerChoice === 1 && computerChoice === 2) {
+                text.innerHTML += 'Computer Wins';
+                score.losses++;
+            }
+
+            if (playerChoice === 2 && computerChoice === 0) {
+                text.innerHTML += 'Computer Wins';
+                score.losses++;
+            }
+            if (playerChoice === 2 && computerChoice === 1) {
+                text.innerHTML += 'Player Wins';
+                score.wins++;
+            }
+            scoreShow();
+            localStorage.setItem('score', JSON.stringify(score));
+        }
+        let score = JSON.parse(localStorage.getItem('score'));
+        if(!score){
+            score = {
+                wins: 0,
+                losses: 0,
+                ties:0
+            };
+        }
+        
+        scoreShow()
+
+    </script>
+</body>
+
+</html>

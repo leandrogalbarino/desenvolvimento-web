@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+<body>
+    <main>
+        <section class="game">
+            <div class="game-text">
+                <p >Rock, Papel and Scissors</p>
+            </div>
+            <div class="game-options">
+                <button onclick="
+                    game(0);
+                    ">Rock</button>
+                <button onclick="
+                    game(1);
+                ">Paper</button>
+                <button onclick="
+                    game(2);
+                ">Scissors</button>
+            </div>
+        </section>
+        <section class="score">
+            <p class="score-text">
+                Placar: 0 a 0
+            </p>
+        </section>
+    </main>
+    <script>
+    
+        // // Objects
+        // const product = {
+        //     name: 'car',
+        //     price: 50000
+        // };
+
+        // console.log(typeof product);
+        // console.log(product.name);
+        // console.log(product.price);
+    
+        // product.name = 'new car'
+        // console.log(product.name);
+        // product.newProperty = true;
+        // console.log(product);
+        // delete product.newProperty;
+        // console.log(product);
+
+        const product2 = {
+            name: 'shirt',
+            'dilivery-time': 100,
+            rating: {
+                stars: 4.5,
+                count: 87
+            },
+            fun: function function2(){
+                console.log('function inside object');
+            }
+        };
+        console.log(product2);
+        console.log(product2.name)
+        console.log(product2['name']) // Bracket Notation
+        console.log(product2['dilivery-time'])
+        console.log(product2.rating.count)
+        console.log(product2['rating'].count)
+        console.log(product2['rating']['stars'])
+        console.log(product2.rating['stars'])
+        product2.fun();
+
+        // console is object, console.log(), log is funciton inside object console, your name is method 
+
+        // Building Objects: JSON Built-in Object
+        // JSON this not suport functions and JSON need "name"
+        // We use JSON when we send data between computers
+        // Built-in JSON Object
+        // Convert: JavaScript Object => JSON
+        console.log(JSON.stringify(product2));
+        const json = JSON.stringify(product2);
+        // Convert: JSON => JavaScript Object
+        console.log(JSON.parse(json));
+
+
+        // Build-in object: LocalStorage
+        // so far save values in variables, but variables are temporary: if we refresh or close the page, all the viables are deleted 
+        // LocalStore save values more permanently
+
+        localStorage.setItem('message', 'hello');
+        console.log(localStorage.getItem('message'));
+
+        // localStore one support strings, objects is not string, but JSON.stringfy() transform in to string.
+        // after we convert JSON Object to Java Script Object: JSON.parse() 
+    
+        // AutoBoxing
+        // PROPERTY strings
+        // 'hello' => special object
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+        // Object are references
+        const object1 = {
+            message: 'hello'
+        };
+        const object2 = object1;
+        object2.message = 'bye';
+        
+        console.log(object1 === object2);
+        console.log(object1.message);
+
+        
+        // ShortCut in objects
+        const object3 = {
+            message: 'Good job!',
+            price: 799
+        };
+        // const message = object4.message;
+        const {message, price} = object3;
+        console.log(price);
+        console.log(message);
+        const object4 = {
+            message, 
+            // extend
+            // method: function function1(){
+            //     console.log('method');
+            // }
+            // shotCut
+            method(){
+                console.log('method')
+            }
+        }
+        console.log(object4)
+        object4.method();
+    </script>
+</body>
+</html>

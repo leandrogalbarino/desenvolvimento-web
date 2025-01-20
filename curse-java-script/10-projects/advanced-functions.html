@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+</head>
+
+<body>
+    <script>
+
+        // Function inside funcion
+        function fun(param) {
+            param();
+        }
+
+        // Anonymous function
+        // function is a value 
+        const function1 = function () {
+            console.log('hello world');
+        }
+        fun(function1);
+        function1();
+
+        // Function inside object
+        const obj = {
+            func: function () {
+                console.log('good morning');
+            }
+        }
+        obj.func();
+
+        //Asynchronous code
+        // execute the function once 
+        const timeId = setTimeout(function () {
+            console.log('timeout');
+        }, 4000);
+
+        // Cancela a execucao
+        clearTimeout(timeId);
+
+        // Execute your funtion over and over again
+        const intervalId = setInterval(function () {
+            console.log('interval');
+        }, 3000);
+        clearInterval(intervalId);
+
+        // Loop through an array
+        // Using method in the array
+        const array1 = [
+            'make dinner',
+            'wash dishes',
+            'watch youtube'
+        ];
+        // .forEach() method is the preferred way to loop through an array, because easir to read
+        
+        // WAYS TO USE
+        array1.forEach(function (value, index) {
+            console.log(index);
+            console.log(value);
+        });
+
+        // forEach method don't have continue, but we can do the same thing with a return statement 
+        array1.forEach(function (value, index) {
+            if (value === 'make dinner') {
+                return;
+            }
+            console.log(index);
+            console.log(value);
+        });
+        
+        // Callback in separate function
+        // function logItem(value, index) {
+        //     console.log(index);
+        //     console.log(value);
+        // }
+        // array1.forEach(logItem);
+
+
+
+        // unfortunately there's not an easy way to break in forEach Loop, so if we need to use break then it's better to use a regular for Loop
+
+        // WITH ARRAY FUNCTIONS
+        //  works the same way as a normal function
+        const arrowFunction = (param) => {
+            console.log('hello');
+        };
+        arrowFunction(1);
+        // so now let's learn some differences
+        // arrowFunctions have a shortcuts
+        
+        // SHORTCUTS
+        const oneParam = param => {
+            console.log(param);
+        };
+        oneParam(1);
+
+        const oneLine = () => 2 + 3;
+        console.log(oneLine());
+
+        // FOREACH WITH ARRAY FUNCTION
+        // so when we're passing a function into another function like forEach it's a recommended to use arrow function
+        array1.forEach((value, index) => {
+            console.log(index);
+            console.log(value);
+        });
+
+        // In object, the second method is recommended, because easier to read than an arrow function
+        const object2 = {
+            method: () => {
+                console(1)
+            },
+            method2(){
+                console(2)
+            }
+        };
+    </script>
+
+</body>
+
+</html>

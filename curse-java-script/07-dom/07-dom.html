@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="hello">
+        <button>Oi</button>
+    </div>
+
+    <script>
+        // HTML and JavaScript together
+        // Transform HTML in JavaScript Object
+        // document.body.innerHTML = 'bye';
+        // document.title = 'Good Job!';
+        // documento.querySelector('button').innerText;
+        
+        // First button
+        document.querySelector('button').innerHTML = 'name';
+        // First element in the class hello
+        document.querySelector('.hello').innerHTML += '<h1>holla</h1>';
+
+        // In the variable
+        const divElement = document.querySelector('.hello');
+        console.log(divElement);
+        alert('hello')
+
+        // exist other event: onclick, onkeydown, etc.. and event is object 
+
+        // window represent the browser and the document your webpage
+        // window.document
+        // window.console
+        // window.alert
+        // But we don't have type window in document and console, why document and console is shorcut
+
+
+        // In this lesson: 
+        // 1. DOM
+        // 2. document.querySelector()
+        // 3. innerHTML and innerText
+        // 4. 3 projects using the DOM
+        // 5. onclick and onkeydown
+        // 6. More details about strings + window object
+        </script>
+</body>
+</html>

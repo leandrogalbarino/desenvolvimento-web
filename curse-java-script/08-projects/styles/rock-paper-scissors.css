@@ -1,0 +1,66 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(25, 25, 25);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.game {
+    padding: 30px;
+}
+
+.game h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.button-game {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgb(25, 25, 25);
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+
+.button-game img {
+    width: 50px;
+}
+
+.round-container {
+    padding: 10px ;
+}
+
+.round-result {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.round-play {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.img-moves {
+    width: 50px;
+}
+
+.button-reset {
+    padding: 8px 25px;
+    font-size: 16px;
+    /* width: 200px; */
+}
+
+.score-container {
+    margin: 20px 0;
+}
+
+.score-container p {
+    margin-bottom: 10px;
+}

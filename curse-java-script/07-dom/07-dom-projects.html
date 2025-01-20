@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="
+    margin:0px;
+    padding:10px;
+">
+    <p>YouTube Subscribe Button</p>
+    <button class="subscribeButton" onclick="
+        subscribe();
+    ">Subscribe</button>
+
+    <p>Rock Paper Scrissors</p>
+    <a href="game.html">Click here</a>
+
+    <section style="background-color:pink;">
+        <p>Amazon Shipping Calculator</p>
+        <p>Orders under $40 = +$10 shipping</p>
+        <p>Orders over $40 = Free shipping</p>
+        <input type="number" name="cost" id="cost" placeholder="Cost of order" onkeydown="
+            handleCostKeydown(event);
+        ">
+
+        <button label="cost" onclick="
+        amazonShippingCalculator();
+        ">Calculate</button>
+        <p class="result"></p>
+    </section>
+    <br>
+    <a href="08-together-projects.html">CSS version of these projects</a>
+    <script>
+
+        function subscribe() {
+            const subscribeButton = document.querySelector('.subscribeButton');
+            if (subscribeButton.innerText == 'Subscribe')
+                subscribeButton.innerHTML = 'Subscribed'
+            else
+                subscribeButton.innerHTML = 'Subscribe'
+        }
+
+        function amazonShippingCalculator() {
+            const pElement = document.querySelector('.result');
+            const value = Number(document.querySelector('#cost').value);
+            if (value < 40) {
+                pElement.innerHTML = `$${(value + 10)}`;
+            } else {
+                pElement.innerHTML = `$${value}`;
+            }
+        }
+
+        function handleCostKeydown(event) {
+            // event is a object
+            // event.key is a 
+            if (event.key === 'Enter') {
+                amazonShippingCalculator();
+            }
+        }
+
+    </script>
+</body>
+
+</html>

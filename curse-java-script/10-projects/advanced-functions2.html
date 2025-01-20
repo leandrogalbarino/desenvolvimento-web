@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+</head>
+<button class="js-button">Click</button>
+
+<body>
+    <script>
+        // Now we're going to learn a better way of ding this called addEventListener()
+        const buttonElement = document.querySelector('.js-button');
+        //  lets us run some code when we interact with the element
+        // Two parameter: 1. event, 
+        // This code does the same thing as the onclick attribute, however addEventListener has some advantages over using an attribute
+        // 1. Multiple event listeners for one event
+        // 2. We can remove an event listener
+        // .removeEventListener()
+        // addEventListener  giver us more control over 
+        // Best pratice: Use .addEventListener() instead of onclick="" 
+
+        const eventListener = () => {
+            console.log('click');
+        };
+
+        buttonElement.addEventListener('click', eventListener);
+        buttonElement.removeEventListener('click', eventListener);
+
+        buttonElement.addEventListener('click', () => {
+            console.log('click2');
+        });
+
+        // ARRAY FILTER AND MAP
+        // return arrays with values return true
+        console.log([1, -3, 5].filter((value, index) => {
+            return value >= 0;
+            // return value > 2 ? true : false;
+        }));
+
+        // return values in the array with operations
+        console.log([1, 1, 3].map((value, index) => {
+            return value * 2;
+        }));
+        // Shorcut  
+        console.log([1, 1, 3].map(value =>  value * 2));
+
+        // In this lesson
+        // 1. Functions are values
+        // 2. setTImeout() and setInterval()
+        // 3. .forEach()
+        // 4. Arrow funcitons, .addEventListener()
+        // 5. .filter() and .map()
+        // 6. Closure
+
+    </script>
+</body>
+
+</html>
