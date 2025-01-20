@@ -1,3 +1,6 @@
+// import {myCart as cart} from '../data/cart.js'
+import {cart} from '../data/cart.js'
+
 function createProducts() {
   const productsElement = document.querySelector('.products-grid');
   let productsHTML = '';
