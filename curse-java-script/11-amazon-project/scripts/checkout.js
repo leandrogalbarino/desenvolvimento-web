@@ -1,11 +1,8 @@
-import { cart } from '../data/cart.js'
+import { cart, removeFromCart, updateProductQuantity } from '../data/cart.js'
 import { products } from '../data/products.js';
 import { formatCurrenty } from './utils/money.js';
 
-
-
-
-function loadProducts() {
+function renderCart() {
     const containerElement = document.querySelector('.js-order-summary');
     let productsHTML = ''
 
@@ -36,18 +33,18 @@ function loadProducts() {
                                 <div class="product-price">
                                     $${formatCurrenty(matchingProduct.priceCents)}
                                 </div>
-                                <div class="product-quantity">
+                                <div class="product-quantity, js-product-quantity">
                                     <span>
                                         Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                                     </span>
-                                    <span class="update-quantity-link link-primary">
+                                    <span class="update-quantity-link link-primary js-update-link" data-product-id="${matchingProduct.id}">
                                         Update
                                     </span>
-                                    <span class="delete-quantity-link link-primary">
+                                    <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id} ">
                                         Delete
                                     </span>
+                                    </div>
                                 </div>
-                            </div>
 
                             <div class="delivery-options">
                                 <div class="delivery-options-title">
@@ -95,8 +92,41 @@ function loadProducts() {
                 </div>
             `;
         }
-    }); 
+    });
     containerElement.innerHTML = productsHTML;
+    addEventListeners();
+
 }
-console.log(cart);
-loadProducts();
+
+function eventProductsDelete() {
+    const deleteButtonList = document.querySelectorAll('.js-delete-link');
+    deleteButtonList.forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            removeFromCart(productId);
+            renderCart();
+        });
+    });
+}
+
+function eventProductsUpdate() {
+    const updateButtonList = document.querySelectorAll('.js-update-link');
+    updateButtonList.forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            updateProductQuantity(productId);
+            renderCart();
+        });
+    });
+}
+
+function addEventListeners() {
+    eventProductsDelete();
+    eventProductsUpdate();
+}
+
+function main() {
+    renderCart();
+}
+
+main();
