@@ -1,4 +1,4 @@
-import { cart, removeFromCart, updateProductQuantity } from '../data/cart.js'
+import { cart, cartQuantity, removeFromCart, updateProductQuantity } from '../data/cart.js'
 import { products } from '../data/products.js';
 import { formatCurrenty } from './utils/money.js';
 
@@ -17,7 +17,7 @@ function renderCart() {
 
         if (matchingProduct) {
             productsHTML += `
-                <div class="cart-item-container">
+                <div class="cart-item-container js-cart-item-container-${productId}">
                     <div class="delivery-date">
                         Delivery date: Wednesday, June 15
                     </div>
@@ -95,16 +95,22 @@ function renderCart() {
     });
     containerElement.innerHTML = productsHTML;
     addEventListeners();
-
 }
+
+function cartQuantityUpdate() {
+    document.querySelector('.js-cart-quantity').innerHTML = `${cartQuantity()} itens`;
+}
+
 
 function eventProductsDelete() {
     const deleteButtonList = document.querySelectorAll('.js-delete-link');
     deleteButtonList.forEach((link) => {
         link.addEventListener('click', () => {
-            const productId = link.dataset.productId;
+            const productId = link.dataset.productId.trim();
             removeFromCart(productId);
-            renderCart();
+            const container = document.querySelector(`.js-cart-item-container-${productId}`);
+            container.remove()
+            cartQuantityUpdate();
         });
     });
 }
@@ -115,6 +121,7 @@ function eventProductsUpdate() {
         link.addEventListener('click', () => {
             const productId = link.dataset.productId;
             updateProductQuantity(productId);
+            cartQuantityUpdate();
             renderCart();
         });
     });
@@ -126,6 +133,7 @@ function addEventListeners() {
 }
 
 function main() {
+    cartQuantityUpdate();
     renderCart();
 }
 
