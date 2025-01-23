@@ -1,4 +1,4 @@
-import { cart, cartQuantity, removeFromCart, updateProductQuantity} from '../data/cart.js'
+import { cart , cartDeliveryChangeOption , cartQuantity, removeFromCart, updateProductQuantity} from '../data/cart.js'
 import { products } from '../data/products.js';
 import formatCurrenty from './utils/money.js';
 import {deliveryOptions} from '../data/deliveryOptions.js'
@@ -19,7 +19,6 @@ function renderCart() {
         const deliveryOptionId = cartItem.deliveryOptionId;
         let deliveryOption;
         
-        console.log(deliveryOptionId);
         deliveryOptions.forEach((option) => {
             if (option.id === deliveryOptionId) {
                 deliveryOption = option;
@@ -83,17 +82,14 @@ function dateAdd(days) {
 
 function deliveryOptionsHTML(matchingProduct, cartItem) {
     let html = '';
-
     deliveryOptions.forEach((deliveryOption) => {
-
         const dateString = dateAdd(deliveryOption.DeliveryDays);
         const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrenty(deliveryOption.priceCents)} - `
         
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
-        console.log(isChecked);
         html += `
             <div class="delivery-option">
-                <input type="radio" ${isChecked ? 'checked' : '' } class="delivery-option-input"
+                <input type="radio" ${isChecked ? 'checked' : '' } value="${deliveryOption.id}" class="delivery-option-input"
                     name="delivery-option-${matchingProduct.id}">
                     <div>
                         <div class="delivery-option-date">
@@ -127,6 +123,19 @@ function eventProductsDelete() {
     });
 }
 
+function eventRadioOptions() {
+    cart.forEach((cartItem) => {
+        const selectOption = document.querySelectorAll(`input[name="delivery-option-${cartItem.productId}"]`);
+        selectOption.forEach((option) => {
+            option.addEventListener('change', () => {
+                cartDeliveryChangeOption(cartItem, option.value.trim())
+                renderCart();
+            });
+        })
+    });
+
+}
+
 function eventProductsUpdate() {
     const updateButtonList = document.querySelectorAll('.js-update-link');
     updateButtonList.forEach((link) => {
@@ -143,6 +152,7 @@ function eventProductsUpdate() {
 function addEventListeners() {
     eventProductsDelete();
     eventProductsUpdate();
+    eventRadioOptions();
 }
 
 function main() {
