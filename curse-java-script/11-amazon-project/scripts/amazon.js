@@ -2,7 +2,7 @@
 import { cart, cartAddProduct, cartQuantity } from '../data/cart.js'
 // import * as cartModule from '../data/cart.js'
 import { products } from '../data/products.js'
-import { formatCurrenty } from './utils/money.js';
+import { formatCurrency } from './utils/money.js';
 
 
 function createProducts() {
@@ -27,7 +27,7 @@ function createProducts() {
                   </div>
                 </div>
                 <div class="product-price">
-                  $${formatCurrenty(product.priceCents)}
+                  $${formatCurrency(product.priceCents)}
                 </div>
                 <div class="product-quantity-container">
                   <select class="js-num-products-${product.id}">

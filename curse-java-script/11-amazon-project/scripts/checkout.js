@@ -1,6 +1,6 @@
 import { cart, cartDeliveryChangeOption, cartQuantity, deliveryPrice, productsPrice, removeFromCart, updateProductQuantity } from '../data/cart.js'
 import { products } from '../data/products.js';
-import formatCurrenty from './utils/money.js';
+import formatCurrency from './utils/money.js';
 import { deliveryOptions } from '../data/deliveryOptions.js'
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
@@ -41,7 +41,7 @@ function renderCart() {
                                     ${matchingProduct.name}
                                 </div>
                                 <div class="product-price">
-                                    $${formatCurrenty(cartItem.priceCents)}
+                                    $${formatCurrency(cartItem.priceCents)}
                                 </div>
                                 <div class="product-quantity, js-product-quantity">
                                     <span>
@@ -88,7 +88,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
     let html = '';
     deliveryOptions.forEach((deliveryOption) => {
         const dateString = dateAdd(deliveryOption.DeliveryDays);
-        const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrenty(deliveryOption.priceCents)} - `
+        const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} - `
 
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
         html += `
@@ -132,7 +132,7 @@ function paymentSummaryHTML() {
                 Items (${cartQuantity()}):
             </div>
             <div class="payment-summary-money">
-                $${formatCurrenty(productsMoney)}
+                $${formatCurrency(productsMoney)}
             </div>
         </div>
 
@@ -141,7 +141,7 @@ function paymentSummaryHTML() {
                 Shipping &amp; handling:
             </div>
             <div class="payment-summary-money">
-                $${formatCurrenty(deliveryMoney)}
+                $${formatCurrency(deliveryMoney)}
             </div>
         </div>
         <div class="payment-summary-row subtotal-row">
@@ -149,7 +149,7 @@ function paymentSummaryHTML() {
                 Total before tax:
             </div>
             <div class="payment-summary-money">
-                $${formatCurrenty(totalBeforeTax)}
+                $${formatCurrency(totalBeforeTax)}
             </div>
         </div>
         <div class="payment-summary-row">
@@ -157,7 +157,7 @@ function paymentSummaryHTML() {
                 Estimated tax (10%):
             </div>
             <div class="payment-summary-money">
-                $${formatCurrenty(tax)}
+                $${formatCurrency(tax)}
             </div>
         </div>
         <div class="payment-summary-row total-row">
@@ -165,7 +165,7 @@ function paymentSummaryHTML() {
                 Order total:
             </div>
             <div class="payment-summary-money">
-                $${formatCurrenty(orderTotal)}
+                $${formatCurrency(orderTotal)}
             </div>
         </div>
         <button class="place-order-button button-primary">
