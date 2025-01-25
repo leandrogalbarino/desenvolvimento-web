@@ -1,13 +1,18 @@
 import { deliveryOptions } from "./deliveryOptions.js";
 import { products } from "./products.js";
 // import formatCurrency from "../scripts/utils/money.js";
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart;
+
+loadFromStorage();
+
+export function loadFromStorage() {
+    cart = JSON.parse(localStorage.getItem('cart'));
 
 
-if (!cart) {
-    cart = [];
+    if (!cart) {
+        cart = [];
+    }
 }
-
 
 function saveStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -15,6 +20,9 @@ function saveStorage() {
 
 function quantityProductAdded(productId) {
     const select = document.querySelector(`.js-num-products-${productId}`);
+    if (!select) {
+        return 1;
+    }
     return select.value;
 }
 
