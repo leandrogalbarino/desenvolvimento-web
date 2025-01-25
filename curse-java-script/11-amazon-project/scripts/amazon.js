@@ -1,5 +1,5 @@
 // import {myCart as cart} from '../data/cart.js'
-import {cart, cartAddProduct, cartQuantity} from '../data/cart.js'
+import { cart, cartAddProduct, cartQuantity } from '../data/cart.js'
 // import * as cartModule from '../data/cart.js'
 import { products } from '../data/products.js'
 import { formatCurrenty } from './utils/money.js';
@@ -30,7 +30,7 @@ function createProducts() {
                   $${formatCurrenty(product.priceCents)}
                 </div>
                 <div class="product-quantity-container">
-                  <select>
+                  <select class="js-num-products-${product.id}">
                     <option selected value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -46,7 +46,7 @@ function createProducts() {
                 
                 <div class="product-spacer"></div>
             
-                <div class="added-to-cart">
+                <div class="added-to-cart js-added-to-cart${product.id}">
                   <img src="images/icons/checkmark.png">
                   Added
                 </div>
@@ -67,22 +67,31 @@ function cartUpdateQuantity() {
 }
 
 
+
+function addedProductHTML(productId) {
+  document.querySelector(`.js-added-to-cart${productId}`).style.opacity = 1;
+  setTimeout(() => {
+    document.querySelector(`.js-added-to-cart${productId}`).style.opacity = 0;
+  }, 2000);
+}
+
 function eventAddCart() {
   document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
       button.addEventListener('click', () => {
         const productId = button.dataset.productId;
         cartAddProduct(productId);
+        addedProductHTML(productId);
         cartUpdateQuantity();
 
       });
     });
-  }
-  
-  function addEventListeners() {
-    eventAddCart();
-    console.log(cart);
-  
+}
+
+function addEventListeners() {
+  eventAddCart();
+  console.log(cart);
+
 }
 
 function main() {

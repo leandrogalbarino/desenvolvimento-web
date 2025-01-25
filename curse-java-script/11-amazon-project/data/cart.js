@@ -1,6 +1,6 @@
-import { deliveryOptions } from "./deliveryOptions";
-// import { products } from "./products";
-
+import { deliveryOptions } from "./deliveryOptions.js";
+import { products } from "./products.js";
+// import formatCurrenty from "../scripts/utils/money.js";
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 
@@ -13,8 +13,22 @@ function saveStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+function quantityProductAdded(productId) {
+    const select = document.querySelector(`.js-num-products-${productId}`);
+    return select.value;
+}
+
 export function cartAddProduct(productId) {
     let matchingItem;
+    let product;
+    let quantity = Number(quantityProductAdded(productId));
+
+    products.forEach((productsItem) => {
+        if (productId === productsItem.id) {
+            product = productsItem;
+        }
+    });
+
     cart.forEach((cartItem) => {
         if (productId === cartItem.productId) {
             matchingItem = cartItem;
@@ -22,33 +36,51 @@ export function cartAddProduct(productId) {
     });
 
     if (matchingItem) {
-        matchingItem.quantity++;
+        matchingItem.quantity += quantity;
     } else {
         cart.push({
             productId,
-            quantity: 1,
-            deliveryOptionId: '3'
+            quantity,
+            priceCents: product.priceCents * quantity,
+            deliveryOptionId: '1'
         });
     }
     saveStorage();
 }
 
+function deliveryOptionCalc(cartItem, option, operation) {
+    deliveryOptions.forEach((deliveryOption) => {
+        if (option === deliveryOption.id) {
+            if (operation === 'sum') {
+                cartItem.priceCents += deliveryOption.priceCents;
+            }
+            else if (operation === 'subtraction') {
+                cartItem.priceCents -= deliveryOption.priceCents;
+            }
+        }
+    });
+}
+
+function quantityCalc(cartItem, quantity) {
+    cartItem.priceCents = (cartItem.priceCents / cartItem.quantity) * quantity;
+    cartItem.quantity = quantity;
+    saveStorage();
+}
+
+
+
 export function cartDeliveryChangeOption(cartItem, option) {
     if (cartItem.deliveryOptionId === option) {
         return;
     }
- 
-    cartItem.deliveryOptionId = option;
-    // products.forEach((product) => {
-    //     if (product.id === cartItem.productId) {
-    //         deliveryOptions.forEach((deliveryOption) => {
-    //             if (option === deliveryOption) {
-    //                 product.priceCents += deliveryOption.priceCents;
-    //             }
-    //         });
-    //     }
-    // });
 
+    const beforeOption = cartItem.deliveryOptionId;
+    cartItem.deliveryOptionId = option;
+
+    deliveryOptionCalc(cartItem, beforeOption, 'subtraction');
+    deliveryOptionCalc(cartItem, cartItem.deliveryOptionId, 'sum');
+
+    // Save Products
     saveStorage();
 }
 
@@ -61,22 +93,45 @@ export function cartQuantity() {
     return cartQuantity;
 }
 
+export function productsPrice() {
+    let cartPrice = 0;
+    cart.forEach((cartItem) => {
+        cartPrice += cartItem.priceCents;
+    });
+    return cartPrice;
+}
+
+export function deliveryPrice() {
+    let cartPrice = 0;
+    cart.forEach((cartItem) => {
+        deliveryOptions.forEach((deliveryOption) => {
+            if (deliveryOption.id === cartItem.deliveryOptionId) {
+                cartPrice += deliveryOption.priceCents;
+            }
+        });
+    });
+    return cartPrice;
+}
+
+
 export function removeFromCart(productId) {
     if (!productId) {
         console.error('productId não encontrado para este link:');
         return;
     }
 
-    cart = cart.filter((cartProduct) => {
-        return cartProduct.productId.trim() !== productId.trim();
+    cart = cart.filter((cartItem) => {
+        return cartItem.productId.trim() !== productId.trim();
     });
     saveStorage();
 }
 
 export function updateProductQuantity(productId) {
-    cart.forEach((cartProduct) => {
-        if (productId.trim() === cartProduct.productId.trim()) {
-            cartProduct.quantity++;
+    cart.forEach((cartItem) => {
+        if (productId.trim() === cartItem.productId.trim()) {
+            const newQuantity = cartItem.quantity + 1;
+            quantityCalc(cartItem, newQuantity);
+
         }
     });
     saveStorage();
