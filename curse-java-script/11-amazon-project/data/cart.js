@@ -101,7 +101,7 @@ export function cartQuantity() {
     return cartQuantity;
 }
 
-export function productsPrice() {
+export function cartProductsPrice() {
     let cartPrice = 0;
     cart.forEach((cartItem) => {
         cartPrice += cartItem.priceCents;
@@ -109,7 +109,7 @@ export function productsPrice() {
     return cartPrice;
 }
 
-export function deliveryPrice() {
+export function cartDeliveryPrice() {
     let cartPrice = 0;
     cart.forEach((cartItem) => {
         deliveryOptions.forEach((deliveryOption) => {
