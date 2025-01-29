@@ -1,5 +1,8 @@
-import { renderOrderSummary } from '../../../scripts/checkout/orderSummary.js';
+import { renderCart } from '../../../scripts/checkout.js';
+// import { renderOrderSummary } from '../../../scripts/checkout/orderSummary.js';
 import { loadFromStorage } from '../../../data/cart.js';
+
+
 
 describe('test suite: renderOrderSummary', () => {
   const product1 = '5968897c-4d27-4872-89f6-5bcb052746d7'
@@ -8,17 +11,7 @@ describe('test suite: renderOrderSummary', () => {
 
   beforeEach(() => {
     container = document.querySelector('.js-test-container');
-    if (!container) {
-      // Cria um container no DOM virtual, se não existir
-      container = document.createElement('div');
-      container.className = 'js-test-container';
-      document.body.appendChild(container);
-    }
-    container.innerHTML = `
-      <div class="js-order-summary"></div>
-      <div class="js-payment-summary"></div>
-      <div class="js-cart-quantity"></div>
-    `;
+
     spyOn(localStorage, 'setItem');
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([{
@@ -36,7 +29,7 @@ describe('test suite: renderOrderSummary', () => {
       ]);
     });
     loadFromStorage();
-    renderOrderSummary();
+    renderCart();
   });
 
   it('displays the cart', () => {
@@ -51,11 +44,23 @@ describe('test suite: renderOrderSummary', () => {
       document.querySelector(`.js-product-quantity-${product2}`).innerText
     ).toContain('Quantity: 2')
   });
-  
+
+  it('remove a product', () => {
+
+    document.querySelector(`.js-delete-link-${product1}`).click();
+    expect(
+      document.querySelectorAll('.js-cart-item-container').length
+    ).toEqual(1);
+    expect(
+      document.querySelector(`.js-delete-link-${product1}`)
+    ).toEqual(null);
+  });
 
 
   afterEach(() => {
-    container.innerHTML = ''; // Limpa o conteúdo do container
+    setTimeout(() => {
+      container.innerHTML = '';
+    }, 50);
   });
 
 });

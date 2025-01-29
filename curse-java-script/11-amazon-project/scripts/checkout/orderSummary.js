@@ -1,4 +1,5 @@
-import { cart } from '../../data/cart.js'
+import { cart,  cartDeliveryChangeOption, removeFromCart, updateProductQuantity } from '../../data/cart.js';
+import { renderCart } from '../checkout.js';
 import { products } from '../../data/products.js';
 import formatCurrency from '.././utils/money.js';
 import { deliveryOptions } from '../../data/deliveryOptions.js'
@@ -6,30 +7,6 @@ import dateAdd from '../utils/date.js';
 // import { addEventListeners } from '../checkout.js';
 
 
-function deliveryOptionsHTML(matchingProduct, cartItem) {
-    let html = '';
-    deliveryOptions.forEach((deliveryOption) => {
-        const dateString = dateAdd(deliveryOption.DeliveryDays);
-        const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} - `
-
-        const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
-        html += `
-            <div class="delivery-option">
-                <input type="radio" ${isChecked ? 'checked' : ''} value="${deliveryOption.id}" class="delivery-option-input"
-                    name="delivery-option-${matchingProduct.id}">
-                    <div>
-                        <div class="delivery-option-date">
-                            ${dateString}
-                        </div>
-                        <div class="delivery-option-price">
-                            ${priceString} Shipping
-                        </div>
-                    </div>
-            </div>                
-            `;
-    });
-    return html;
-}
 
 export function renderOrderSummary() {
     const orderSummaryElement = document.querySelector('.js-order-summary');
@@ -98,4 +75,76 @@ export function renderOrderSummary() {
         }
     });
     orderSummaryElement.innerHTML = productsHTML;
+    addEventListeners();
+}
+
+function deliveryOptionsHTML(matchingProduct, cartItem) {
+    let html = '';
+    deliveryOptions.forEach((deliveryOption) => {
+        const dateString = dateAdd(deliveryOption.DeliveryDays);
+        const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} - `
+
+        const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+        html += `
+            <div class="delivery-option">
+                <input type="radio" ${isChecked ? 'checked' : ''} value="${deliveryOption.id}" class="delivery-option-input"
+                    name="delivery-option-${matchingProduct.id}">
+                    <div>
+                        <div class="delivery-option-date">
+                            ${dateString}
+                        </div>
+                        <div class="delivery-option-price">
+                            ${priceString} Shipping
+                        </div>
+                    </div>
+            </div>                
+            `;
+    });
+    return html;
+}
+
+
+function addEventListeners() {
+    eventProductsDelete();
+    eventProductsUpdate();
+    eventRadioOptions();
+}
+
+function eventProductsDelete() {
+    const deleteButtonList = document.querySelectorAll('.js-delete-link');
+    deleteButtonList.forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId.trim();
+            removeFromCart(productId);
+            const container = document.querySelector(`.js-cart-item-container-${productId}`);
+            container.remove();
+
+            renderCart();
+        });
+    });
+}
+
+function eventRadioOptions() {
+    cart.forEach((cartItem) => {
+        const selectOption = document.querySelectorAll(`input[name="delivery-option-${cartItem.productId}"]`);
+        selectOption.forEach((option) => {
+            option.addEventListener('change', () => {
+                cartDeliveryChangeOption(cartItem, option.value.trim());
+                renderCart();
+            });
+        })
+    });
+
+}
+
+function eventProductsUpdate() {
+    const updateButtonList = document.querySelectorAll('.js-update-link');
+
+    updateButtonList.forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            updateProductQuantity(productId);
+            renderCart();
+        });
+    });
 }
