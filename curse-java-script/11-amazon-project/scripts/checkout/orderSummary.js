@@ -33,7 +33,6 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
 export function renderOrderSummary() {
     const orderSummaryElement = document.querySelector('.js-order-summary');
-    console.log(orderSummaryElement);
     let productsHTML = '';
 
     cart.forEach((cartItem) => {
