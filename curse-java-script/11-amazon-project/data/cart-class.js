@@ -4,22 +4,20 @@ import { deliveryOptionItem } from './deliveryOptions.js';
 // in Class use CapitalizeCase
 class Cart {
   cartItems;
-  localStorageKey;
+  // Private property
+  #localStorageKey;
 
   // More details about constructor
   // 1. Has to be named "constructor"
   // 2. Shold not return anything
   constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  // setLocalStorageKey(localStorageKey) {
-  //   this.localStorageKey = localStorageKey;
-  // }
 
-  loadFromStorage() {
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+  #loadFromStorage() {
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
     if (!this.cartItems) {
       this.cartItems = [];
     }
@@ -147,7 +145,6 @@ class Cart {
 
 const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
-
 
 console.log(cart);
 console.log(businessCart);
