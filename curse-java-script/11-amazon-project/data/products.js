@@ -659,3 +659,6 @@ export const products = [
   }
 ];
 
+export function productItem(productId) {
+  return products.find(productsItem => productId === productsItem.id);
+}
