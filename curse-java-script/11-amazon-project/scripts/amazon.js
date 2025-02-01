@@ -1,7 +1,7 @@
 // import {myCart as cart} from '../data/cart.js'
 import { cart, cartAddProduct, cartQuantity } from '../data/cart.js'
 // import * as cartModule from '../data/cart.js'
-import { products, loadProducts} from '../data/products.js'
+import { products, loadProducts } from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 
 
@@ -99,5 +99,15 @@ function renderProductsGrid() {
   cartUpdateQuantity();
   addEventListeners();
 }
+// Call Back
+// loadProducts(renderProductsGrid);
 
-loadProducts(renderProductsGrid);
+// Promise
+// So this Promise does same thing as a call back
+new Promise((resolve) => {
+  loadProducts(() => {
+    resolve();
+  });
+}).then(() => {
+  renderProductsGrid();
+});
