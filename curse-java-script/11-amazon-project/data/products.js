@@ -758,9 +758,16 @@ const object3 = {
 object3.method();
 */
 
-
-
 // const currentDate = new Date();
 // console.log(currentDate);
 // console.log(currentDate.toLocaleTimeString());
 // console.log(currentDate.toLocaleDateString());
+
+// Witch style of programming should we use?
+// OOP or Precedural Programing
+// it's up to you
+
+// Supersimple Dev prefer Precedural Programing in javaScript, because he think it's simpler, and use OOP if working on a team that also uses it
+
+// OOP is more popular in other languages.
+// So it's still useful to know
