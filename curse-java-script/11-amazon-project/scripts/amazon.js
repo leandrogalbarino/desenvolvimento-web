@@ -1,7 +1,7 @@
 // import {myCart as cart} from '../data/cart.js'
 import { cart, cartAddProduct, cartQuantity } from '../data/cart.js'
 // import * as cartModule from '../data/cart.js'
-import { products } from '../data/products.js'
+import { products, loadProducts} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 
 
@@ -94,10 +94,10 @@ function addEventListeners() {
   eventAddCart();
 }
 
-function main() {
+function renderProductsGrid() {
   createProducts();
   cartUpdateQuantity();
   addEventListeners();
 }
 
-main();
+loadProducts(renderProductsGrid);
