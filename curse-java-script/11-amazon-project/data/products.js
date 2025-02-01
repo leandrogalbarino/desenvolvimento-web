@@ -43,16 +43,21 @@ class Clothing extends Product {
   // Method Overrriding 
   extraInfoHTML() {
     // For use method extraInfoHTML of parents use:
-    // super.extraInfoHTML();    
-    // But if you didn't replace it, just access it with: 
+    // super.extraInfoHTML();
+    // But if you didn't replace it, just access it with:
     // <p>${this.getPrice()}</p>
+    // Inside this is the pointer for class
+    // console.log(this);
+    
     return `
     <a href="${this.sizeChartLink}" target="_blank">
       Size chart
     </a>
     `;
   }
+  
 }
+
 
 export const products = [
   {
@@ -719,9 +724,43 @@ export const products = [
   }
   return new Product(productDetails);
 });
-console.log(products)
-
 
 export function productItem(productId) {
   return products.find(productsItem => productId === productsItem.id);
 }
+
+
+/* 
+// Outside class this is undefined
+// console.log(this);
+// const object2 = {
+//   a: 2,
+//   b: this.a
+// };
+
+// this is undefined
+// but we can change it if use .call()
+function logThis(param1) {
+  console.log(this + param1);
+}
+// logThis('1');
+// set value this to 'hello'
+logThis.call('hello', '1');
+
+// arrow functions do not change the value of "this"
+
+// this is pointer to object3
+const object3 = {
+  method() {
+    console.log(this);
+  }
+};
+object3.method();
+*/
+
+
+
+// const currentDate = new Date();
+// console.log(currentDate);
+// console.log(currentDate.toLocaleTimeString());
+// console.log(currentDate.toLocaleDateString());
