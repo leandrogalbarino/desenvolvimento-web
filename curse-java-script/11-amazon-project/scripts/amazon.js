@@ -8,7 +8,6 @@ import { formatCurrency } from './utils/money.js';
 function createProducts() {
   const productsElement = document.querySelector('.products-grid');
   let productsHTML = '';
-
   products.forEach((product) => {
     productsHTML += `
             <div class="product-container">
@@ -43,7 +42,10 @@ function createProducts() {
                     <option value="10">10</option>
                   </select>
                 </div>
-                
+                  <!-- Polymorphism - use a method without knowing the class -->
+
+                ${product.extraInfoHTML()}
+
                 <div class="product-spacer"></div>
             
                 <div class="added-to-cart js-added-to-cart${product.id}">
@@ -90,8 +92,6 @@ function eventAddCart() {
 
 function addEventListeners() {
   eventAddCart();
-  console.log(cart);
-
 }
 
 function main() {
