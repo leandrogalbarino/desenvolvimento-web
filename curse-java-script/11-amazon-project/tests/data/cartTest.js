@@ -1,6 +1,14 @@
 import { cart, loadFromStorage, cartAddProduct } from "../../data/cart.js";
+import { loadProducts } from "../../data/products.js";
 
 describe('test suite: cartAddProduct', () => {
+
+  beforeAll((done) => {
+    loadProducts(() => {
+      done();
+    });
+  });
+
   it('add an existing product to the cart', () => {
     spyOn(localStorage, 'setItem');
 

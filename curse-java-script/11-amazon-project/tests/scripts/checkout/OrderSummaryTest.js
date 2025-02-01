@@ -1,13 +1,19 @@
 import { renderCart } from '../../../scripts/checkout.js';
 // import { renderOrderSummary } from '../../../scripts/checkout/orderSummary.js';
 import { loadFromStorage } from '../../../data/cart.js';
-
+import { loadProducts } from '../../../data/products.js';
 
 
 describe('test suite: renderOrderSummary', () => {
   const product1 = '5968897c-4d27-4872-89f6-5bcb052746d7'
   const product2 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6'
   let container;
+
+  beforeAll((done) => {
+    loadProducts(() => {
+      done();
+    });
+  });
 
   beforeEach(() => {
     container = document.querySelector('.js-test-container');
