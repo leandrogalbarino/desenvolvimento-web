@@ -58,10 +58,31 @@ class Clothing extends Product {
 
 }
 
+// fetch = better way to make HTTP request
+// fetch use promises
+export function loadProductsFetch() {
+  // By default fetch is get
+  // Fetch is a lot more simple than XMLHttpRequest
+  // response contain reponse from the backend
+  const promise = fetch('https://supersimplebackend.dev/products/'
+  ).then((response) => {
+    return response.json();
+
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+  });
+  return promise;
+}
+
+
 
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
-
   xhr.addEventListener('load', () => {
     const response = xhr.response;
     products = JSON.parse(response).map((productDetails) => {

@@ -1,5 +1,5 @@
 import { cartQuantity } from '../data/cart.js';
-import { loadProducts, products } from '../data/products.js';
+import { loadProducts, loadProductsFetch } from '../data/products.js';
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadCart } from '../data/cart.js';
@@ -39,13 +39,28 @@ export function renderCart() {
 
 // Run multiples promisses in a same time
 // Best pratice
+// Promise.all([
+//     new Promise((resolve) => {
+//         loadProductsFetch(() => {
+//             resolve('value1')
+//             // Value of value save in then(*value*) param
+//         });
+//     }),
+//     new Promise((resolve) => {
+//         loadCart(() => {
+//             resolve()
+//         });
+//     })
+
+// ]).then((values) => {
+//     console.log(values);
+//     renderCart()
+// });
+
+
+// fetch helps us make our code a lot cleaner, because it can return a promise directly
 Promise.all([
-    new Promise((resolve) => {
-        loadProducts(() => {
-            resolve('value1')
-            // Value of value save in then(*value*) param
-        });
-    }),
+    loadProductsFetch(),
     new Promise((resolve) => {
         loadCart(() => {
             resolve()
@@ -56,6 +71,7 @@ Promise.all([
     console.log(values);
     renderCart()
 });
+
 
 
 
