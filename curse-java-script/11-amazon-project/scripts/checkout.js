@@ -59,20 +59,48 @@ export function renderCart() {
 
 
 // fetch helps us make our code a lot cleaner, because it can return a promise directly
-Promise.all([
-    loadProductsFetch(),
-    new Promise((resolve) => {
+// Promise.all([
+//     loadProductsFetch(),
+    // new Promise((resolve) => {
+    //     loadCart(() => {
+    //         resolve()
+    //     });
+    // })
+
+// ]).then((values) => {
+//     console.log(values);
+//     renderCart()
+// });
+
+
+
+// async await is a shortcut for promises and it removes all this extra code
+
+// makes a function return a promise
+// this code is shortcut for this code:
+// function loadPage() {
+//     return new Promise((resolve) => {
+//         console.log('load page');
+//         resolve('value2');
+//     });
+// }
+
+// the best practice is use async await over promises and callbacks 
+async function loadPage() {
+    // await code finish equal then
+    // We can only use await, when we're an async function
+    // await only support Promises
+    await loadProductsFetch();
+    const value = await new Promise((resolve) => {
         loadCart(() => {
-            resolve()
+            resolve('afa')
         });
-    })
+    });
+    console.log(value);
+    renderCart();
+}
 
-]).then((values) => {
-    console.log(values);
-    renderCart()
-});
-
-
+loadPage();
 
 
 // new Promise((resolve) => {
