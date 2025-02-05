@@ -61,11 +61,11 @@ export function renderCart() {
 // fetch helps us make our code a lot cleaner, because it can return a promise directly
 // Promise.all([
 //     loadProductsFetch(),
-    // new Promise((resolve) => {
-    //     loadCart(() => {
-    //         resolve()
-    //     });
-    // })
+// new Promise((resolve) => {
+//     loadCart(() => {
+//         resolve()
+//     });
+// })
 
 // ]).then((values) => {
 //     console.log(values);
@@ -87,16 +87,27 @@ export function renderCart() {
 
 // the best practice is use async await over promises and callbacks 
 async function loadPage() {
+
     // await code finish equal then
     // We can only use await, when we're an async function
     // await only support Promises
-    await loadProductsFetch();
-    const value = await new Promise((resolve) => {
-        loadCart(() => {
-            resolve('afa')
+
+    // We can use try/catch to catch errors in normal code
+    try {
+        // throw 'error 1';
+        await loadProductsFetch();
+        const value = await new Promise((resolve, reject) => {
+            // throw 'error2';
+
+            loadCart(() => {
+                // reject('error3');
+                resolve('afa')
+            });
         });
-    });
-    console.log(value);
+
+    } catch (error) {
+        console.log('Unexpected error. Please try again later');
+    }
     renderCart();
 }
 
