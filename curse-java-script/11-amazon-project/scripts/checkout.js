@@ -9,7 +9,6 @@ import { loadCart } from '../data/cart.js';
 
 
 function renderNumProducts() {
-
     document.querySelector('.js-cart-quantity').innerHTML = `${cartQuantity()} itens`;
 }
 

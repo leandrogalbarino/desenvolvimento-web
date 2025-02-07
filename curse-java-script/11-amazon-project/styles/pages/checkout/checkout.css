@@ -214,3 +214,26 @@
   opacity: 0;
   width: 30px;
 }
+
+.payment-buttons-disabled{
+  background-color:rgb(255, 235, 137);
+  cursor: default;
+  box-shadow: none;
+  border: none;
+
+
+}
+.payment-buttons-disabled:hover{
+  background-color:rgb(255, 235, 137);
+  box-shadow: none;
+  border: none;
+}
+
+
+.view-products-link{
+  display: inline-block;
+  text-decoration: none;
+  width: 120px;
+  text-align: center;
+  padding: 8px;
+}

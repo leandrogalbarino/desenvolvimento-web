@@ -1,6 +1,7 @@
 import formatCurrency from "../utils/money.js";
 import { cartQuantity, cartProductsPrice, cartDeliveryPrice, cart } from "../../data/cart.js";
-import { addOrder } from "../../data/orders.js";
+import { addOrder, orders} from "../../data/orders.js";
+
 
 export function renderPaymentSummary() {
     const paymentSummaryElement = document.querySelector('.js-payment-summary');
@@ -57,16 +58,30 @@ export function renderPaymentSummary() {
                 $${formatCurrency(orderTotal)}
             </div>
         </div>
-        <button class="place-order-button js-place-order button-primary">
-            Place your order
-        </button>
+        ${paymentButton()}
     `;
     paymentSummaryElement.innerHTML = html;
     addEventListeners();
 }
 
+function paymentButton() {
+    let className = 'js-place-order';
+    if (cart.length === 0) {
+        className = 'payment-buttons-disabled';
+    }
+    const buttonHTML = `
+        <button class="place-order-button ${className} button-primary">
+            Place your order
+        </button>
+    `;
+    return buttonHTML;
+
+}
+
 function placeOrderButton() {
     const placeOrder = document.querySelector('.js-place-order');
+    console.log(orders);
+
     placeOrder.addEventListener('click', async () => {
         try {
             // GET - Get something from backend
@@ -88,7 +103,6 @@ function placeOrderButton() {
         } catch (error) {
             console.log('Unexpected error. Try again later.');
         }
-
         window.location.href = 'orders.html';
     });
 }

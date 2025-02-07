@@ -8,7 +8,6 @@ loadFromStorage();
 export function loadFromStorage() {
     cart = JSON.parse(localStorage.getItem('cart'));
 
-
     if (!cart) {
         cart = [];
     }
@@ -49,12 +48,13 @@ export function cartAddProduct(productId) {
         cart.push({
             productId,
             quantity,
-            priceCents: product.priceCents * quantity,
-            deliveryOptionId: '1'
+            deliveryOptionId: '1',
+            priceCents: product.priceCents * quantity
         });
     }
     saveStorage();
 }
+
 
 function deliveryOptionCalc(cartItem, option, operation) {
     deliveryOptions.forEach((deliveryOption) => {
@@ -150,7 +150,6 @@ export function loadCart(fun) {
 
     xhr.addEventListener('load', () => {
         const response = xhr.response;
-        console.log(response);
         fun();
     });
     xhr.open('GET', 'https://supersimplebackend.dev/cart/');

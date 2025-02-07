@@ -8,8 +8,7 @@ import dateAdd from '../utils/date.js';
 
 
 
-export function renderOrderSummary() {
-    const orderSummaryElement = document.querySelector('.js-order-summary');
+function orderSummaryHTML() {
     let productsHTML = '';
 
     cart.forEach((cartItem) => {
@@ -74,6 +73,21 @@ export function renderOrderSummary() {
           `;
         }
     });
+    return productsHTML;
+}
+export function renderOrderSummary() {
+    const orderSummaryElement = document.querySelector('.js-order-summary');
+    let productsHTML = orderSummaryHTML();
+    if (productsHTML === '') {
+        productsHTML = `
+        <div>
+            <p>Your cart is empty.</p>
+            <br>
+            <a class="button-primary view-products-link" href="amazon.html">View products</a>
+        </div>
+        `
+    }
+
     orderSummaryElement.innerHTML = productsHTML;
     addEventListeners();
 }
