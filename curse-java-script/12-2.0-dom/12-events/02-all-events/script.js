@@ -16,6 +16,10 @@ const onDragStart = () => console.log('drag start event');
 const onDrag = () => console.log('drag event');
 const onDragEnd = () => console.log('drag end event');
 
+const onKeyDown = (event) => console.log(event.key);
+const onKeyUp = (event) => console.log(event.key);
+const onKeyPress = (event) => console.log(event.key);
+
 // Event Listeners
 logo.addEventListener('click', onClick);
 logo.addEventListener('dblclick', onDoubleClick);
@@ -30,3 +34,36 @@ logo.addEventListener('mouseout', onMouseOut);
 logo.addEventListener('dragstart', onDragStart);
 logo.addEventListener('drag', onDrag);
 logo.addEventListener('dragend', onDragEnd);
+
+// Key events
+logo.addEventListener('keydown', onKeyDown);
+logo.addEventListener('keyup', onKeyUp);
+logo.addEventListener('keypress', onKeyPress);
+
+
+// input events
+const input = document.querySelector('input')
+const checkbox = document.querySelector('.check')
+const heading = document.querySelector('h1');
+const priorityInput = document.querySelector('#options');
+
+function onInput(event) {
+  heading.textContent = event.target.value;
+}
+
+function onChecked(event) {
+  console.log(event.target.checked);
+}
+
+input.addEventListener('input', onInput);
+priorityInput.addEventListener('change', onInput);
+
+checkbox.addEventListener('input', onChecked);
+
+input.addEventListener('focus', () => {
+  console.log('Input is focused');
+});
+
+input.addEventListener('blur', () => {
+  console.log('Input is blured');
+});
