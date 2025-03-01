@@ -1,71 +1,35 @@
-import connection from '../database/connection.js'
+import SelectionRepository from "../repositories/SelectionRepository.js";
 
 class SelectionController {
 
-  index(request, response) {
-    const sql = "SELECT * FROM selections;"
-
-    connection.query(sql, (error, result) => {
-      if (error) {
-        response.status(404).json({ 'erro': error });
-      } else {
-        response.status(200).json(result);
-      }
-    });
+  async index(request, response) {
+    const row = await SelectionRepository.findAll();
+    response.json(row);
   }
 
-  show(request, response) {
+  async show(request, response) {
     const id = request.params.id;
-    const sql = "SELECT * FROM selections WHERE id=?;"
-
-    connection.query(sql, id, (error, result) => {
-      const row = result[0];
-      if (error) {
-        response.status(404).json({ 'erro': error });
-      } else {
-        response.status(200).json(row);
-      }
-    });
+    const row = await SelectionRepository.findById(id);
+    response.json(row)
   }
 
-  store(request, response) {
+  async store(request, response) {
     const data = request.body;
-    const sql = "INSERT INTO selections SET ?;"
-  
-    connection.query(sql, data, (error, result) => {
-      if (error) {
-        response.status(404).json({ 'erro': error });
-      } else {
-        response.status(201).json(result);
-      }
-    });
+    const row = await SelectionRepository.create(data);
+    response.json(row);
   }
-  
-  update(request, response) {
+
+  async update(request, response) {
     const id = request.params.id;
     const data = request.body;
-    const sql = "UPDATE selections SET ? WHERE id=?;"
-
-    connection.query(sql, [data, id], (error, result) => {
-      if (error) {
-        response.status(404).json({ 'erro': error });
-      } else {
-        response.status(200).json(result);
-      }
-    });
+    const row = await SelectionRepository.update(id, data);
+    response.json(row)
   }
 
-  delete(request, response) {
+  async delete(request, response) {
     const id = request.params.id;
-    const sql = "DELETE FROM selections WHERE id=?;"
-
-    connection.query(sql, id, (error, result) => {
-      if (error) {
-        response.status(404).json({ 'erro': error });
-      } else {
-        response.status(200).json(result);
-      }
-    });
+    const row = await SelectionRepository.delete(id);
+    response.json(row)
   }
 
 }
