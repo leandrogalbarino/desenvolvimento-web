@@ -1,69 +1,35 @@
-import connection from '../database/connection.js'
+import { consult } from '../database/connection.js'
 
 class SelectionRepository {
   // CRUD
   create(data) {
     const sql = "INSERT INTO selections SET ?;"
-    return new Promise((resolve, reject) => {
-      connection.query(sql, data, (error, result) => {
-        if (error) return reject({ 'erro': error });
-
-        return resolve(result);
-      });
-    });
+    const mensageError = 'Não foi possível criar.';
+    return consult(sql, data, mensageError)
   }
 
   findAll() {
     const sql = "SELECT * FROM selections;"
-    return new Promise((resolve, reject) => {
-      connection.query(sql, (error, result) => {
-        if (error) return reject('Não foi possível localizar');
-        return resolve(result);
-        // const rows = JSON.parse(JSON.stringify(result));
-
-      });
-    });
-
+    const mensageError = 'Não foi possível localizar nenhuma seleção.';
+    return consult(sql, mensageError);
   }
 
   findById(id) {
     const sql = "SELECT * FROM selections WHERE id=?;"
-
-    return new Promise((resolve, reject) => {
-      connection.query(sql, id, (error, result) => {
-        if (error) return reject({ 'erro': error });
-        // if (result.length === 0) return resolve(null);
-        return resolve(result[0]);
-        // const row = JSON.parse(JSON.stringify(result[0]));
-        
-      });
-
-    });
+    const mensageError = `Não foi possível localizar um seleção com id=${id}.`;
+    return consult(sql, id, mensageError);
   }
 
   update(id, data) {
     const sql = "UPDATE selections SET ? WHERE id=?;"
-
-    return new Promise((resolve, reject) => {
-      connection.query(sql, [data, id], (error, result) => {
-        if (error) return reject(error);
-        return resolve(result);
-
-      });
-    });
+    const mensageError = `Não foi possível atualizar o dado com id=${id}`;
+    return consult(sql, [data, id], mensageError);
   }
 
   delete(id) {
     const sql = "DELETE FROM selections WHERE id=?;"
-
-    return new Promise((resolve, reject) => {
-      connection.query(sql, id, (error, result) => {
-        if (error) return reject({ 'erro': error });
-        return resolve(result);
-
-      });
-    });
-
+    const mensageError = `Não foi possível deletar o dado com id=${id}`;
+    return consult(sql, id, mensageError);
   }
 }
 
