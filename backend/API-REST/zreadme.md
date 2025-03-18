@@ -3,7 +3,7 @@
 
 
 // init project in terminal
-// npm init -i
+// npm init -y
 // npm install express --save
 
 // npm install nodemon -D
