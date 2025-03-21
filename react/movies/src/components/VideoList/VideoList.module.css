@@ -1,0 +1,9 @@
+.videos {
+  margin: 0 auto;
+  max-width: 60rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  justify-content: center;
+  margin-top: .8rem;
+}

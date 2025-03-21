@@ -11,6 +11,7 @@ function Header() {
         <nav className={styles.nav}>
           <Link to="/" className={styles.link}>Home</Link>
           <Link to="/Watch" className={styles.link}>Assitir</Link>
+          <Link to="/Search" className={styles.link}>Pesquisar</Link>
         </nav>
       </div>
     </header>
