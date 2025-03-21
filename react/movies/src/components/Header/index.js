@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <span className={styles.logo}>LRflix</span>
+        <Link to="/" className={styles.logo}>
+          <span>LRflix</span>
+        </Link>
         <nav className={styles.nav}>
-          <a href="./">Home</a>
-          <a href="./">Assistir</a>
+          <Link to="/" className={styles.link}>Home</Link>
+          <Link to="/Watch" className={styles.link}>Assitir</Link>
         </nav>
       </div>
     </header>

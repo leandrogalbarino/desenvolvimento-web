@@ -19,15 +19,16 @@
   }
 
   & .logo{
+    text-decoration: none;
     font-size: 2rem;
     font-weight: 500;
     color: rgb(255, 0, 0);
   }
   
   & .nav{
-    & a{
+    & .link{
       padding: 0 .5rem;
-      color: white;
+      color: rgb(255, 255, 255);
       text-decoration: none;
   
     }
