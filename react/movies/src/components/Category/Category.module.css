@@ -3,16 +3,17 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 60rem;
-
+  max-width: 1200px;
+  
   & h2 {
     padding-block: 1rem;
   }
 }
 
 .cards {
-  gap: .8rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin: 0 auto;
+  padding-inline:30px;
+  width: 100%;
+  
+
 }

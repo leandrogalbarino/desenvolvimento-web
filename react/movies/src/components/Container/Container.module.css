@@ -1,11 +1,11 @@
 .container{
 
   width: 100%;
-  min-height: 800px;
+  min-height: 100vh;
   color: #fff;
   background-color: #191919;
   text-align: center;
-  padding-block: 2rem;
-
+  padding-bottom: 2rem;
+  overflow:hidden;
 }
 

@@ -1,7 +1,16 @@
 .card{
-
+  padding: 15px;
+  width: 225px;
   & img{
     border-radius: 5px;
-    width: 225px;
+    width: 100%;
+    height:100%;
+    transition: scale .5s;
   }
+}
+
+.card img:hover{
+  /* transform: scale(1.15); */
+  scale: 1.2;
+  box-shadow: 0 0 10px #222;
 }

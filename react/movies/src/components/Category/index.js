@@ -16,11 +16,6 @@ function CardSection({ category, children }) {
       <h2>{category}</h2>
       <div className={styles.cards}>
         {children}
-        
-        
-        {// videos.filter((video) => video.category === category)
-          //   .map((video) => <Card id={video.id} key={video.id} />)
-        }
       </div>
     </section>
   )
