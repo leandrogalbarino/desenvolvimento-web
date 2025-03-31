@@ -1,16 +1,40 @@
 .card{
   padding: 15px;
   width: 225px;
-  & img{
-    border-radius: 5px;
-    width: 100%;
-    height:100%;
-    transition: scale .5s;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
-.card img:hover{
+.cover{
+  border-radius: 5px;
+  width: 100%;
+  height:100%;
+  transition: scale .5s;
+}
+
+.cover:hover{
   /* transform: scale(1.15); */
   scale: 1.2;
   box-shadow: 0 0 10px #222;
+}
+
+.icon{
+  width: 30px;
+  height: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.532);
+  border-radius: 10px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 0 5px 8px 0;
+  transition: background-color .7s;
+}
+
+.icon:hover{
+  background-color: black;
+  cursor:pointer;
 }
