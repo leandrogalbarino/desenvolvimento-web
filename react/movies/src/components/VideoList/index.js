@@ -10,7 +10,7 @@ function VideoList({ videos, emptyHeading }) {
   }
   return (
     <>
-      <h2>{heading}</h2>
+      <h2 className={styles.subtitle}>{heading}</h2>
       <section className={styles.videos}>
         {
           videos.map((video) => {

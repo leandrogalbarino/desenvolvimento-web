@@ -12,6 +12,7 @@ function Header() {
           <Link to="/" className={styles.link}>Home</Link>
           <Link to="/search" className={styles.link}>Pesquisar</Link>
           <Link to="/favorites" className={styles.link}>Favoritos</Link>
+          <Link to="/video-cadastre" className={styles.link}>Cadastrar Video</Link>
         </nav>
       </div>
     </header>

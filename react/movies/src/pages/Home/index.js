@@ -9,13 +9,6 @@ import Card from "../../components/Card";
 
 function Home() {
 
-  // let name = '';
-  // function getName(event) {
-  //   setName(event.target.value);
-  // }
-  // // Hook
-  // const [name, setName] = useState();
-
   return (
     <>
       <Header />
