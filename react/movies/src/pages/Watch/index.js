@@ -5,6 +5,7 @@ import Container from "../../components/Container";
 import videos from "../../json/videos.json";
 import { useParams } from "react-router-dom";
 import PageNotFound from "../PageNotFound";
+import ScrollToTopButton from "../../components/ScrollToTopButton";
 
 function Watch() {
   
@@ -28,6 +29,8 @@ function Watch() {
         </section>
       </Container>
       <Footer />
+      <ScrollToTopButton/>
+
     </>
   );
 }

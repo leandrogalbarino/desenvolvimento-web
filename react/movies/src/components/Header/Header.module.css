@@ -33,3 +33,23 @@
     }
   }
 }
+
+
+@media (max-width: 600){
+  .container span{
+    font-size: 1.5rem;
+  }
+  .link{
+    font-size: 0.95rem;
+    padding-inline:0.5rem;
+  }
+}
+
+@media (max-width:380){
+  .logo span{
+    font-size: 1.5rem;
+  }
+  .nav .link{
+    font-size: 0.75rem;
+  }
+}

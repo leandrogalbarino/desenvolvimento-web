@@ -5,6 +5,7 @@ import Container from "../../components/Container";
 import Carousel from "../../components/Carousel";
 import Category, {categories, filterCategory} from "../../components/Category"
 import Card from "../../components/Card";
+import ScrollToTopButton from "../../components/ScrollToTopButton";
 // import { useState } from "react";
 
 function Home() {
@@ -27,6 +28,7 @@ function Home() {
         }
       </Container>
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 }
